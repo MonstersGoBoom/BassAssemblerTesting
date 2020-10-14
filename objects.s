@@ -1,12 +1,13 @@
 	; simple test of BadAss assembler 
-	;	creates 3 files 
+	;	creates 2 files 
 	; 2 object.bin files for different "tasks"
-	; the main prg incbin's those files 
-	;	we then copy them to alternate locations and run them
+	; which are loaded by the test.s project 
 
 	!section "ZP",2,size=254,NO_STORE
 
 ;	seperate file
+;	this is a simple "task"
+; no jmp / jsr to internal functions in here makes it relocatable
 !section "Object1.bin",$4000,NO_STORE|TO_PRG
 Object:
 	beq .init
@@ -21,6 +22,7 @@ Object:
 		rts 
 
 	;	shared variables
+	;	these are in the same space for both objects
 	!section "Object.variables",in="ZP"
 	.data: 
 		!ds 1
@@ -28,13 +30,18 @@ Object:
 		!ds 1
 
 ;	seperate file
+;	this is another simple "task"
+; no jmp / jsr to internal functions in here makes it relocatable
+
 !section "Object2.bin",$4100,NO_STORE|TO_PRG
 Object2:
 	.main:
 		lda .data
 		sta $d021
 		rts
+
 	;	shared variables with Object
+	;	these are in the same space for both objects
 	!section "Object.variables",in="ZP"
 	.data: 
 		!ds 1

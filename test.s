@@ -1,6 +1,7 @@
 	; simple test of BadAss assembler 
 	; the main prg incbin's the object files
 	;	we then copy them to alternate locations and run them
+	; those files are simple relocatable tasklets to test out the assembler
 
 	!section "ZP",2,size=254,NO_STORE
 	!section "RAM",$801
