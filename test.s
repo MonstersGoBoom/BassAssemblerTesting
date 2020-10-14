@@ -1,13 +1,18 @@
-	; simple test of BadAss assembler 
-	; the main prg incbin's the object files
-	;	we then copy them to alternate locations and run them
-	; those files are simple relocatable tasklets to test out the assembler
+;-------------------------------------------------------------
+;	simple test of BadAss assembler 
+;	the main prg incbin's the object files
+;	we then copy them to alternate locations and run them
+;	those files are simple relocatable tasklets to test out the assembler
+;-------------------------------------------------------------
 
 	!section "ZP",2,size=254,NO_STORE
 	!section "RAM",$801
 	!section "Virtual",$1000,size=$1000,NO_STORE
 
+  ;-------------------------------------------------------------
 	;	traditional startup code
+  ;-------------------------------------------------------------
+
 	!section "code",in="RAM"
 	!byte $0b,$08,$01,$00,$9e,str(start),$00,$00,$00
 
@@ -50,11 +55,15 @@ start:
 	lda #$00 
 	jsr $3100
 
-	;	stall 
+  ;-------------------------------------------------------------
+	;	stall / mainloop
+  ;-------------------------------------------------------------
+
 again:
 	lda $d012 
 	cmp #$80 
 	bne again
+
 	;	call both tasks
 	lda #$1 
 	jsr $3000
@@ -72,12 +81,15 @@ CopyBlock:
 	iny
 	bne -
 	rts
-
-;	storing more ZP data for testing
+;-------------------------------------------------------------
+;	Storing more ZP data for testing
+;-------------------------------------------------------------
 !section "variables",in="ZP"
 	test0: !ds 1
 
-; back to code
+;-------------------------------------------------------------
+; Back to code
+;-------------------------------------------------------------
 !section "another",in="RAM"
 anotherfunc:
 	rts
@@ -88,7 +100,9 @@ o1:
 o2:
 	!incbin "Object2.bin"
 
-;	virtual tables space testing
+;-------------------------------------------------------------
+;	Virtual tables space testing
+;-------------------------------------------------------------
 !section "filler",in="Virtual"
 space:
 	!ds 256
