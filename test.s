@@ -10,7 +10,7 @@
 	!section "Virtual",$1000,size=$1000,NO_STORE
 
   ;-------------------------------------------------------------
-	;	traditional startup code
+  ; Traditional startup code
   ;-------------------------------------------------------------
 
 	!section "code",in="RAM"
@@ -56,7 +56,7 @@ start:
 	jsr $3100
 
   ;-------------------------------------------------------------
-	;	stall / mainloop
+	; Stall / mainloop
   ;-------------------------------------------------------------
 
 again:
@@ -82,13 +82,13 @@ CopyBlock:
 	bne -
 	rts
 ;-------------------------------------------------------------
-;	Storing more ZP data for testing
+; Storing more ZP data for testing
 ;-------------------------------------------------------------
 !section "variables",in="ZP"
 	test0: !ds 1
 
 ;-------------------------------------------------------------
-; Back to code
+; Back to code ( testing switching )
 ;-------------------------------------------------------------
 !section "another",in="RAM"
 anotherfunc:
@@ -101,7 +101,7 @@ o2:
 	!incbin "Object2.bin"
 
 ;-------------------------------------------------------------
-;	Virtual tables space testing
+; Virtual tables space testing
 ;-------------------------------------------------------------
 !section "filler",in="Virtual"
 space:

@@ -28,8 +28,8 @@ Object:
 		rts 
 	
   ;-------------------------------------------------------------
-	;	shared variables
-	;	these are in the same space for both objects
+  ;	shared variables
+  ;	these are in the same space for both objects
   ;-------------------------------------------------------------
 	!section "Object.variables",in="ZP"
 	.data: 
@@ -50,8 +50,8 @@ Object2:
 		rts
 
   ;-------------------------------------------------------------
-	;	shared variables with Object
-	;	these are in the same space for both objects
+  ;	shared variables with Object
+  ;	these are in the same space for both objects
   ;-------------------------------------------------------------
 	!section "Object.variables",in="ZP"
 	.data: 
