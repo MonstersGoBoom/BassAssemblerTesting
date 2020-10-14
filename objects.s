@@ -1,16 +1,16 @@
 ;-------------------------------------------------------------
-; simple test of BadAss assembler 
-;	creates 2 files 
-; 2 object.bin files for different "tasks"
-; which are loaded by the test.s project 
+; Simple test of BadAss assembler.
+; Creates 2 files.
+; 2 object.bin files for different "tasks".
+; Which are loaded by the test.s project.
 ;-------------------------------------------------------------
 
   !section "ZP",2,size=254,NO_STORE
 
 ;-------------------------------------------------------------
-;	seperate file
-;	this is a simple "task"
-; no jmp / jsr to internal functions in here makes it relocatable
+; Seperate file.
+; This is a simple "task".
+; no jmp / jsr to internal functions in here makes it relocatable.
 ;-------------------------------------------------------------
 
 !section "Object1.bin",$4000,NO_STORE|TO_PRG
@@ -28,8 +28,8 @@ Object:
 		rts 
 	
   ;-------------------------------------------------------------
-  ;	shared variables
-  ;	these are in the same space for both objects
+  ; shared variables
+  ; these are in the same space for both objects
   ;-------------------------------------------------------------
 	!section "Object.variables",in="ZP"
 	.data: 
@@ -37,8 +37,8 @@ Object:
 	.dataword:
 		!ds 1
 ;-------------------------------------------------------------
-;	seperate file
-;	this is another simple "task"
+; seperate file
+; this is another simple "task"
 ; no jmp / jsr to internal functions in here makes it relocatable
 ;-------------------------------------------------------------
 
@@ -50,8 +50,8 @@ Object2:
 		rts
 
   ;-------------------------------------------------------------
-  ;	shared variables with Object
-  ;	these are in the same space for both objects
+  ; shared variables with Object
+  ; these are in the same space for both objects
   ;-------------------------------------------------------------
 	!section "Object.variables",in="ZP"
 	.data: 

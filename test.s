@@ -1,8 +1,8 @@
 ;-------------------------------------------------------------
-;	simple test of BadAss assembler 
-;	the main prg incbin's the object files
-;	we then copy them to alternate locations and run them
-;	those files are simple relocatable tasklets to test out the assembler
+; Simple test of BadAss assembler. 
+; The main prg incbin's the object files.
+; We then copy them to alternate locations and run them.
+; Those files are simple relocatable tasklets to test out the assembler.
 ;-------------------------------------------------------------
 
 	!section "ZP",2,size=254,NO_STORE
